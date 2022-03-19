@@ -1,8 +1,8 @@
 FROM node:14
 
-WORKDIR /usr/src
-
 COPY ["package.json", "package-lock.json" ,"/usr/src/"]
+
+WORKDIR /usr/src
 
 RUN npm install
 

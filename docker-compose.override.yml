@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    environment:
+      UNA_VARIABLE: "Hola platzi!"
+    # Al añadirse nuevas librerias o dependencias al node_modules, con "docker-compose build" y "docker-compose" up no actualiza al nuevo volumen 
+    # por lo que no se ven reflejadas las nuevas librerias o dependencias (ya que toma el antiguo volumen)
+    # Para solucionar ese problema se usa "docker-compose up --build -V" #For clarify what is -V parameter:
+    # -V, --renew-anon-volumes Recreate anonymous volumes instead of retrieving data from the previous containers.
+    volumes:
+      - ./src:/usr/src
+      - /usr/src/node_modules
+    command: npx nodemon --legacy-watch index.js
