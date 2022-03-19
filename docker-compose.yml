@@ -12,7 +12,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - .:/usr/src
+      - ./src:/usr/src
       - /usr/src/node_modules
     command: npx nodemon --legacy-watch index.js
 
