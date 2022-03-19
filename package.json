@@ -23,7 +23,8 @@
     "cors": "^2.8.5",
     "morgan": "^1.10.0",
     "underscore": "^1.9.1",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "node-fetch": "^2.3.0"
   },
   "devDependencies": {
     "mocha": "5.2.0",

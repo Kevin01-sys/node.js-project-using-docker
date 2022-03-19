@@ -24,7 +24,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 // routes
-app.get('/', (req, res) => {
+/*app.get('/', (req, res) => {
   MongoClient.connect(mongoUrl, { useNewUrlParser: true }, (err, db) => {
     if (err) {
       res.status(500).send('💥 BOM 💥: ' + err);
@@ -33,8 +33,12 @@ app.get('/', (req, res) => {
       db.close();
     }
   });
-});
+});*/
+
+app.use(require('./routes'));
 app.use('/api/movies', require('./routes/movies'));
+app.use('/api/users', require('./routes/users'));
+//app.use(require('./routes/employees'));
 
 // starting the server
 app.listen(app.get('port'), () => {
