@@ -1,12 +1,29 @@
 const express = require('express')
+const morgan = require('morgan');
+const cors = require("cors");
 const app = express()
-const port = 3000
+
+app.use(
+  cors({
+      //origin: "http://localhost:1000",
+      origin: "*",
+  })
+);
+
+// settings
+app.set('port', process.env.PORT || 3000);
 
 const MongoClient = require('mongodb').MongoClient
 
 // Connection URL
 const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost:27017/test';
 
+// middlewares
+app.use(morgan('dev'));
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
+
+// routes
 app.get('/', (req, res) => {
   MongoClient.connect(mongoUrl, { useNewUrlParser: true }, (err, db) => {
     if (err) {
@@ -17,5 +34,9 @@ app.get('/', (req, res) => {
     }
   });
 });
+app.use('/api/movies', require('./routes/movies'));
 
-app.listen(port, () => console.log(`Server listening on port ${port}!`))
+// starting the server
+app.listen(app.get('port'), () => {
+  console.log(`Server on port ${app.get('port')}`);
+});
