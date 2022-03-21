@@ -2,10 +2,10 @@ version: "3.8"
 
 services:
   db:
+    container_name: ${COMPOSE_PROJECT_NAME}-mongo-db
     image: mongo
-    container_name: mongo-db
   app:
+    container_name: ${COMPOSE_PROJECT_NAME}-app
     image: node-js
-    container_name: app-node     
     depends_on:
       - db
