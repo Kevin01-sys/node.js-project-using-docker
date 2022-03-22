@@ -4,8 +4,11 @@ services:
   db:
     container_name: ${COMPOSE_PROJECT_NAME}-mongo-db
     image: mongo
+  mysql:
+    image: mysql:5.7
   app:
     container_name: ${COMPOSE_PROJECT_NAME}-app
     image: node-js
     depends_on:
       - db
+      - mysql

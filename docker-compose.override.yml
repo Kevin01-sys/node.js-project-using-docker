@@ -2,9 +2,26 @@
     # por lo que no se ven reflejadas las nuevas librerias o dependencias (ya que toma el antiguo volumen)
     # Para solucionar ese problema se usa "docker-compose up --build -V" #For clarify what is -V parameter:
     # -V, --renew-anon-volumes Recreate anonymous volumes instead of retrieving data from the previous containers.
+    #   node_modules : external: false
 version: "3.8"
 
 services:
+  db:
+    volumes:
+      - db:/data/db
+      - configdb:/data/configdb
+
+  mysql:
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: dbpass
+      MYSQL_DATABASE: dbnode
+      MYSQL_USER: dbuser
+      MYSQL_PASSWORD: dbpass
+    ports:
+      - "3306:3306"
   app:
     build: .
     environment:
@@ -17,15 +34,8 @@ services:
       - ./src:/usr/src
     command: npx nodemon --legacy-watch index.js
 
-  db:
-    volumes:
-      - db:/data/db
-      - configdb:/data/configdb
-
 volumes:
-  node_modules: 
-    external: false
-  db: 
-    external: false
-  configdb: 
-    external: false
+  node_modules : {} 
+  db:  {}
+  configdb:  {}
+  db_data: {}
