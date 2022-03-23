@@ -1,7 +1,7 @@
-USE company;
+USE dbnode;
 
 DELIMITER $$
-USE `company`$$
+USE `dbnode`$$
 
 CREATE PROCEDURE `employeeAddOrEdit` (
   IN _id INT,
