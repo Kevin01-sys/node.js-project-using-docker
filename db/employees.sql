@@ -47,6 +47,10 @@ CREATE TABLE `employees` (
 
 INSERT INTO `employees` (`id`, `first_name`, `last_name`, `email`, `phone`, `organization`, `designation`, `salary`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Kevin', 'Chocano', 'kevinchocano@gmail.com', '52143305', 'Cinepolis', 'Staff', '100', '1', '2022-03-23', '2022-06-23');
+INSERT INTO `employees` (`id`, `first_name`, `last_name`, `email`, `phone`, `organization`, `designation`, `salary`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'Kevin', 'Chocano', 'kevinchocano@gmail.com', '52143305', 'Cinepolis', 'Staff', '100', '1', '2022-03-23', '2022-06-23');
+INSERT INTO `employees` (`id`, `first_name`, `last_name`, `email`, `phone`, `organization`, `designation`, `salary`, `status`, `created_at`, `updated_at`) VALUES
+(3, 'Kevin', 'Chocano', 'kevinchocano@gmail.com', '52143305', 'Cinepolis', 'Staff', '100', '1', '2022-03-23', '2022-06-23');
 
 --
 -- Indexes for dumped tables
