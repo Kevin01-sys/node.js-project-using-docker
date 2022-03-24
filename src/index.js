@@ -2,6 +2,7 @@ const express = require('express')
 const morgan = require('morgan');
 const cors = require("cors");
 const app = express()
+const employeeRoutes = require('./routes/employee.routes')
 
 app.use(
   cors({
@@ -24,6 +25,10 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 // routes
+
+
+// using as middleware
+app.use('/api/v1/employees', employeeRoutes)
 /*app.get('/', (req, res) => {
   MongoClient.connect(mongoUrl, { useNewUrlParser: true }, (err, db) => {
     if (err) {
@@ -36,9 +41,9 @@ app.use(express.json());
 });*/
 
 app.use(require('./routes'));
-app.use('/api/movies', require('./routes/movies'));
+/*app.use('/api/movies', require('./routes/movies'));
 app.use('/api/users', require('./routes/users'));
-app.use(require('./routes/employees'));
+app.use(require('./routes/employees'));*/
 
 // starting the server
 app.listen(app.get('port'), () => {

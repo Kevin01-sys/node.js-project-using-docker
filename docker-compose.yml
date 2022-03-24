@@ -12,3 +12,19 @@ services:
     depends_on:
       - db
       - mysql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+    depends_on:
+      - db
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+      MYSQL_ROOT_PASSWORD: dbpass
+      MYSQL_DATABASE: dbnode
+      MYSQL_USER: dbuser
+      MYSQL_PASSWORD: dbpass
+    restart: always
+    ports:
+      - 8081:80

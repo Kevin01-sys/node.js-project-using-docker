@@ -33,6 +33,7 @@ services:
       - node_modules:/usr/src/node_modules
       - ./src:/usr/src
     command: npx nodemon --legacy-watch index.js
+    restart: always
 
 volumes:
   node_modules : {} 
